@@ -3,6 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var fs = require('fs');
 var jsdom = require('jsdom');
+var port = 8080
 
 
 app.get('/create-file', function(req, res){
@@ -13,7 +14,7 @@ app.get('/create-file', function(req, res){
 app.get('/table', function(req, res){
   var rows = req.query.rows;
   var cols = req.query.cols;
-  var className = req.query.class;
+  var className = req.query.className;
   var id = req.query.id;
 
   jsdom.env("index.html" ,{
@@ -67,6 +68,6 @@ function createFile(filename) {
   });
 }
 
-http.listen(80, function(){
-   console.log('listening on *:80');
+http.listen(port, function(){
+   console.log('listening on *:' + port);
 });
