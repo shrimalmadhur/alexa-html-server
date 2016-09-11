@@ -1,11 +1,13 @@
 CreateHTMLPageIntent Create a landing page
-ChangeThemeIntent I want to change a theme
-SelectThemeIntent I want to select Theme {themeNumber}
-FinalThemeIntent I want to keep this theme
-HeaderIntent I want to inlude a header from config file
-LogoIntent I want to icludde a logo in my header from config file
-CarouselIntent I want to inlcude a carousel in my page
-SelectCarouselImage Select Image one, Image two, Image four
-SubscribeIntent I want to include a subscribe section in my page
-SocialPluginIntent I want to include a social plugin section in my page
-PublishPageTheme I want to publish my webpage
+ChangeThemeIntent change a theme
+SelectThemeIntent select Theme one
+FinalThemeIntent keep this theme
+HeaderIntent include a header from config file
+LogoIntent icludde a logo in my header from config file
+CarouselIntent inlcude a carousel in my page
+SelectCarouselImage Select Image one Image two Image four
+SubscribeIntent include a subscribe section in my page
+SocialPluginIntent include a social plugin section in my page
+PublishPageTheme publish my webpage
+ValuationIntent get the emerging unicorn with highest valuation
+TopChinaIntent get the top three emerging unicorns in china

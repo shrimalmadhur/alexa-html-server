@@ -1,0 +1,60 @@
+{
+  "intents": [
+    {
+      "intent": "CreateHTMLPageIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "ChangeThemeIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "SelectThemeIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "FinalThemeIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "HeaderIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "LogoIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "CarouselIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "SelectCarouselImage",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "SubscribeIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "SocialPluginIntent",
+      "slots": [
+      ]
+    },
+        {
+      "intent": "PublishPageTheme",
+      "slots": [
+      ]
+    }
+    
+  ]
+}

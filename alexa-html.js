@@ -78,11 +78,7 @@ function onIntent(intentRequest, session, callback) {
         intentName = intentRequest.intent.name;
 
     // Dispatch to your skill's intent handlers
-    if ("MyColorIsIntent" === intentName) {
-        setColorInSession(intent, session, callback);
-    } else if ("WhatsMyColorIntent" === intentName) {
-        getColorFromSession(intent, session, callback);
-    } else if ("CreateHTMLPageIntent" === intentName) {
+    if ("CreateHTMLPageIntent" === intentName) {
         doSomething(intent, session, callback, intentName);
     } else if ("ChangeThemeIntent" === intentName) {
         doSomething(intent, session, callback, intentName);
@@ -103,6 +99,10 @@ function onIntent(intentRequest, session, callback) {
     } else if ("SocialPluginIntent" === intentName) {
         doSomething(intent, session, callback, intentName);
     } else if ("PublishPageTheme" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    }else if ("TopChinaIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    }else if ("ValuationIntent" === intentName) {
         doSomething(intent, session, callback, intentName);
     }else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
@@ -138,7 +138,9 @@ function doSomething(intent, session, callback, intentName) {
         SelectCarouselImage : "Carousel added with the selected image",
         SubscribeIntent : "Subscribe section added",
         SocialPluginIntent : "Social plugin ",
-        PublishPageTheme : "Web page published."
+        PublishPageTheme : "Web page published.",
+        ValuationIntent : "The emerging unicorn is delphix with valuation 981 million dollars",
+        TopChinaIntent : "The top 3 unicorns in china are ule, edaijia and benlai life"
     }
     var sessionAttributes = {};
     var cardTitle = "Welcome";
@@ -148,8 +150,9 @@ function doSomething(intent, session, callback, intentName) {
     var repromptText = speechOutput
     var shouldEndSession = false;
 
-    var speechResponse = buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession);
-    testGet(intentName, {}, speechResponse, callback);
+    var speechletResponse = buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession);
+    // testGet(intentName, {}, speechletResponse, callback);
+    callback(sessionAttributes, speechletResponse);
 }
 
 
