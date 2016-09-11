@@ -1,0 +1,11 @@
+CreateHTMLPageIntent Create a landing page
+ChangeThemeIntent I want to change a theme
+SelectThemeIntent I want to select Theme {themeNumber}
+FinalThemeIntent I want to keep this theme
+HeaderIntent I want to inlude a header from config file
+LogoIntent I want to icludde a logo in my header from config file
+CarouselIntent I want to inlcude a carousel in my page
+SelectCarouselImage Select Image one, Image two, Image four
+SubscribeIntent I want to include a subscribe section in my page
+SocialPluginIntent I want to include a social plugin section in my page
+PublishPageTheme I want to publish my webpage

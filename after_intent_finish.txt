@@ -1,0 +1,11 @@
+CreateHTMLPageIntent Base HTML page created
+ChangeThemeIntent Here are some themes you might want to select. Say "I want to select theme one" to select the first theme
+SelectThemeIntent Theme one selected
+FinalThemeIntent This theme is selected
+HeaderIntent Header section added
+LogoIntent Logo Added
+CarouselIntent Select Images for the carousel. Say "Select Image one Image two Image 4" to select Image one two and four
+SelectCarouselImage Carousel added with the selected image
+SubscribeIntent Subscribe section added
+SocialPluginIntent Social plugin section added
+PublishPageTheme Web page published. 

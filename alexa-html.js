@@ -82,8 +82,28 @@ function onIntent(intentRequest, session, callback) {
         setColorInSession(intent, session, callback);
     } else if ("WhatsMyColorIntent" === intentName) {
         getColorFromSession(intent, session, callback);
-    } else if ("MakeTableIntent" === intentName) {
-        createTable(intent, session, callback);
+    } else if ("CreateHTMLPageIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("ChangeThemeIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("SelectThemeIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("FinalThemeIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("HeaderIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("LogoIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("CarouselIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("SelectCarouselImage" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("SubscribeIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("SocialPluginIntent" === intentName) {
+        doSomething(intent, session, callback, intentName);
+    } else if ("PublishPageTheme" === intentName) {
+        doSomething(intent, session, callback, intentName);
     }else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
@@ -105,19 +125,33 @@ function onSessionEnded(sessionEndedRequest, session) {
 
 // --------------- Functions that control the skill's behavior -----------------------
 
-function createTable(intent, session, callback) {
-    var rows = intent.slots.rows;
-    var cols = intent.slots.cols;
-    var className = intent.slots.className;
-
-    var params = {
-        rows: rows,
-        cols: cols,
-        className: className
+function doSomething(intent, session, callback, intentName) {
+    // If we wanted to initialize the session to have some attributes we could add those here.
+    var textObject = {
+        CreateHTMLPageIntent : "Base HTML page created",
+        ChangeThemeIntent : "Here are some themes you might want to select. Say, I want to select theme one, to select the first theme",
+        SelectThemeIntent : "Theme one selected",
+        FinalThemeIntent : "This theme is selected",
+        HeaderIntent : "Header section added",
+        LogoIntent : "Logo Added",
+        CarouselIntent : "Select Images for the carousel. Say, Select Image one Image two Image 4, to select Image one two and four",
+        SelectCarouselImage : "Carousel added with the selected image",
+        SubscribeIntent : "Subscribe section added",
+        SocialPluginIntent : "Social plugin ",
+        PublishPageTheme : "Web page published."
     }
+    var sessionAttributes = {};
+    var cardTitle = "Welcome";
+    var speechOutput = textObject[intentName];
+    // If the user either does not reply to the welcome message or says something that is not
+    // understood, they will be prompted again with this text.
+    var repromptText = speechOutput
+    var shouldEndSession = false;
 
-    testGet("table", params);
+    var speechResponse = buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession);
+    testGet(intentName, {}, speechResponse, callback);
 }
+
 
 
 function getWelcomeResponse(callback) {
@@ -235,31 +269,21 @@ function buildResponse(sessionAttributes, speechletResponse) {
     };
 }
 
-function testGet(endpoint, params) {
+function testGet(endpoint, sessionAttributes, speechletResponse, callback) {
 
-    var paramStr = "";
-    var flag = true;
-    for(each in params) {
-        if(flag){
-            paramStr += paramStr + each + "=" + params[each];    
-            flag = false;
-        } else {
-            paramStr += "&" + paramStr + each + "=" + params[each];    
-        }
-    }
 
-    var path = "/" + endpoint + "?" + paramStr;
+    var path = "/api/" + endpoint;
     var http = require('http');
     var options = {
-        host: 'ec2-52-73-135-151.compute-1.amazonaws.com',
-        port: 8080,
-        path: paramStr,
+        host: 'ec2-54-242-138-114.compute-1.amazonaws.com',
+        port: 2001,
+        path: path,
         agent: false
     };
 
     http.get(options, function (res) {
         console.log("Response: " + res.statusCode);
-        response(res.statusCode);
+        callback(sessionAttributes, speechletResponse);
     }).on('error', function (e) {
         console.log("Error message: " + e.message);
     });

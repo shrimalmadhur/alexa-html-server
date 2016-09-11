@@ -9,6 +9,7 @@ var port = 8080
 app.get('/create-file', function(req, res){
   console.log("up");
   createFile("index.html");
+  res.end();
 });
 
 app.get('/table', function(req, res){
@@ -28,8 +29,9 @@ app.get('/table', function(req, res){
         console.log("overwritten")
       })
     }
+
   });
-  
+  res.end();
   // jsdom.jQueryify(window, "http://code.jquery.com/jquery-2.1.1.js", function () {
   //   var tmp = document.createElement("div");
   //   // tmp.appendChild(window.$("html"));
@@ -65,6 +67,7 @@ function createFile(filename) {
         GLOBAL.document = window.document;
       }
     });
+    
   });
 }
 
